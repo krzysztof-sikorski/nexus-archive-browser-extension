@@ -1,41 +1,29 @@
+/* global Preferences */
 'use strict'
 
+const preferences = new Preferences()
+
 const getOptionsForm = () => document.getElementById('optionsForm')
-const getStorage = () => browser.storage.sync
 
 const saveForm = event => {
   event.preventDefault()
 
   const optionsForm = getOptionsForm()
-  const userAccessToken = optionsForm.elements['userAccessToken'].value
-  const trackerSubmitUrl = optionsForm.elements['trackerSubmitUrl'].value
-
-  getStorage().set({userAccessToken, trackerSubmitUrl}).catch(
-    error => {
-      const message = `Error saving preferences: ${error}`
-      window.console.error(message)
-      window.alert(message)
-    }
-  )
+  preferences.userAccessToken = optionsForm.elements['userAccessToken'].value
+  preferences.trackerSubmitUrl = optionsForm.elements['trackerSubmitUrl'].value
+  preferences.save()
 }
 
 const initForm = () => {
   const optionsForm = getOptionsForm()
   optionsForm.addEventListener('submit', saveForm)
 
-  getStorage().get(null).then(
-    results => {
-      if (Object.prototype.hasOwnProperty.call(results, 'userAccessToken')) {
-        optionsForm.elements['userAccessToken'].value = results.userAccessToken
-      }
-      if (Object.prototype.hasOwnProperty.call(results, 'trackerSubmitUrl')) {
-        optionsForm.elements['trackerSubmitUrl'].value = results.trackerSubmitUrl
-      }
-    },
-    error => {
-      const message = `Error loading preferences: ${error}`
-      window.console.error(message)
-      window.alert(message)
+  preferences.load().then(
+    () => {
+      window.console.debug('[options] CALL preferences.load().then') // TODO tmp
+      window.console.debug('[options] preferences:', preferences) // TODO tmp
+      optionsForm.elements['userAccessToken'].value = preferences.userAccessToken
+      optionsForm.elements['trackerSubmitUrl'].value = preferences.trackerSubmitUrl
     }
   )
 }

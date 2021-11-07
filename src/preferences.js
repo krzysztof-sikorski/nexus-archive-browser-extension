@@ -1,0 +1,69 @@
+/* exported Preferences */
+'use strict'
+
+class Preferences {
+  constructor() {
+    this._userAccessToken = null
+    this._trackerSubmitUrl = null
+  }
+
+  get userAccessToken() {
+    return this._userAccessToken
+  }
+
+  set userAccessToken(value) {
+    this._userAccessToken = value
+  }
+
+
+  get trackerSubmitUrl() {
+    return this._trackerSubmitUrl
+  }
+
+  set trackerSubmitUrl(value) {
+    this._trackerSubmitUrl = value
+  }
+
+  get _storage() {
+    return browser.storage.sync
+  }
+
+  load() {
+    const storageGetter = this._storage.get(null)
+
+    storageGetter.then(
+      results => {
+        if (Object.prototype.hasOwnProperty.call(results, 'userAccessToken')) {
+          this.userAccessToken = results.userAccessToken
+        }
+        if (Object.prototype.hasOwnProperty.call(results, 'trackerSubmitUrl')) {
+          this.trackerSubmitUrl = results.trackerSubmitUrl
+        }
+      },
+      error => {
+        const message = `Error loading preferences: ${error}`
+        window.console.error(message)
+        window.alert(message)
+      }
+    )
+
+    return storageGetter
+  }
+
+  save() {
+    const storageSetter = this._storage.set({
+      userAccessToken: this.userAccessToken,
+      trackerSubmitUrl: this.trackerSubmitUrl
+    })
+
+    storageSetter.catch(
+      error => {
+        const message = `Error saving preferences: ${error}`
+        window.console.error(message)
+        window.alert(message)
+      }
+    )
+
+    return storageSetter
+  }
+}
