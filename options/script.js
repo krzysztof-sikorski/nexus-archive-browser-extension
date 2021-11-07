@@ -1,10 +1,10 @@
-const getOptionsForm = () => document.getElementById('optionsForm');
-const getStorage = () => browser.storage.sync;
+const getOptionsForm = () => document.getElementById('optionsForm')
+const getStorage = () => browser.storage.sync
 
 const saveForm = event => {
   event.preventDefault()
 
-  const optionsForm = getOptionsForm();
+  const optionsForm = getOptionsForm()
   const userAccessToken = optionsForm.elements['userAccessToken'].value
   const trackerSubmitUrl = optionsForm.elements['trackerSubmitUrl'].value
 
@@ -15,7 +15,7 @@ const saveForm = event => {
       window.alert(message)
     }
   )
-};
+}
 
 const initForm = () => {
   const optionsForm = getOptionsForm()
@@ -36,6 +36,6 @@ const initForm = () => {
       window.alert(message)
     }
   )
-};
+}
 
 document.addEventListener('DOMContentLoaded', initForm)
