@@ -2,7 +2,7 @@
   "author": "Krzysztof Andrzej Sikorski",
   "background": {
     "scripts": [
-      "background_script.js"
+      "src/background.js"
     ]
   },
   "browser_specific_settings": {
