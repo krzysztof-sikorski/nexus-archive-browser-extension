@@ -7,7 +7,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "tracker@nexus-archive.zerozero.pl"
+      "id": "nexus-archive-tracker@zerozero.pl"
     }
   },
   "description": "A browser extension to automatically submit Nexus Clash network traffic to the \"Nexus Archive\" website.",
