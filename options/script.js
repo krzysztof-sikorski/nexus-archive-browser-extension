@@ -1,3 +1,5 @@
+'use strict'
+
 const getOptionsForm = () => document.getElementById('optionsForm')
 const getStorage = () => browser.storage.sync
 
@@ -23,10 +25,10 @@ const initForm = () => {
 
   getStorage().get(null).then(
     results => {
-      if (results.hasOwnProperty('userAccessToken')) {
+      if (Object.prototype.hasOwnProperty.call(results, 'userAccessToken')) {
         optionsForm.elements['userAccessToken'].value = results.userAccessToken
       }
-      if (results.hasOwnProperty('trackerSubmitUrl')) {
+      if (Object.prototype.hasOwnProperty.call(results, 'trackerSubmitUrl')) {
         optionsForm.elements['trackerSubmitUrl'].value = results.trackerSubmitUrl
       }
     },
