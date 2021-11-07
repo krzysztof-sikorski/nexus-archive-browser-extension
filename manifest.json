@@ -1,0 +1,25 @@
+{
+  "author": "Krzysztof Andrzej Sikorski",
+  "background": {
+    "scripts": [
+      "background_script.js"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tracker@nexus-archive.zerozero.pl"
+    }
+  },
+  "description": "A helper extension to automatically submit network traffic to the \"Nexus Archive\" website.",
+  "homepage_url": "https://nexus-archive.zerozero.pl",
+  "icons": {
+    "64": "icons/icon.png"
+  },
+  "manifest_version": 2,
+  "name": "Nexus Archive Tracker",
+  "options_ui": {
+    "page": "options/index.html"
+  },
+  "short_name": "NA Tracker",
+  "version": "0.0.1"
+}
