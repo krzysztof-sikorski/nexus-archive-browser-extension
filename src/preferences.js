@@ -66,4 +66,17 @@ class Preferences {
 
     return storageSetter
   }
+
+  listenForStorageChanges() {
+    browser.storage.onChanged.addListener((changes, areaName) => {
+      if ('sync' === areaName) {
+        if (Object.prototype.hasOwnProperty.call(changes, 'userAccessToken')) {
+          this.userAccessToken = changes.userAccessToken.newValue
+        }
+        if (Object.prototype.hasOwnProperty.call(changes, 'trackerSubmitUrl')) {
+          this.trackerSubmitUrl = changes.trackerSubmitUrl.newValue
+        }
+      }
+    })
+  }
 }
