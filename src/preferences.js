@@ -15,7 +15,6 @@ class Preferences {
     this._userAccessToken = value
   }
 
-
   get trackerSubmitUrl() {
     return this._trackerSubmitUrl
   }
@@ -26,6 +25,18 @@ class Preferences {
 
   get _storage() {
     return browser.storage.sync
+  }
+
+  hasUserAccessToken() {
+    return null !== this._userAccessToken && 0 < this._userAccessToken.length
+  }
+
+  hasTrackerSubmitUrl() {
+    return null !== this._trackerSubmitUrl && 0 < this._trackerSubmitUrl.length
+  }
+
+  isConfigured() {
+    return this.hasUserAccessToken() && this.hasTrackerSubmitUrl()
   }
 
   load() {
