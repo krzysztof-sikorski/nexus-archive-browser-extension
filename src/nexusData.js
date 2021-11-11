@@ -43,6 +43,9 @@ class NexusData {
   }
 
   set requestStartedAt(value) {
+    if (!(value instanceof Date)) {
+      value = new Date(value)
+    }
     this._requestStartedAt = value
   }
 
@@ -51,6 +54,9 @@ class NexusData {
   }
 
   set responseCompletedAt(value) {
+    if (!(value instanceof Date)) {
+      value = new Date(value)
+    }
     this._responseCompletedAt = value
   }
 
