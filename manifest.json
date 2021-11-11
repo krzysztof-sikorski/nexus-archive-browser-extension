@@ -1,7 +1,13 @@
 {
   "author": "Krzysztof Andrzej Sikorski",
   "background": {
+    "persistent": true,
     "scripts": [
+      "src/preferences.js",
+      "src/nexusData.js",
+      "src/nexusDataQueue.js",
+      "src/nexusDataSender.js",
+      "src/webRequestMonitor.js",
       "src/background.js"
     ]
   },
@@ -22,7 +28,11 @@
     "page": "options/index.html"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "unlimitedStorage",
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.nexusclash.com/*"
   ],
   "short_name": "NA Tracker",
   "version": "0.0.2"
