@@ -29,7 +29,6 @@
   },
   "permissions": [
     "storage",
-    "unlimitedStorage",
     "webRequest",
     "webRequestBlocking",
     "*://*.nexusclash.com/*"
