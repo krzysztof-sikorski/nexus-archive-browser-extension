@@ -20,8 +20,6 @@ const initForm = () => {
 
   preferences.load().then(
     () => {
-      window.console.debug('[options] CALL preferences.load().then') // TODO tmp
-      window.console.debug('[options] preferences:', preferences) // TODO tmp
       optionsForm.elements['userAccessToken'].value = preferences.userAccessToken
       optionsForm.elements['trackerSubmitUrl'].value = preferences.trackerSubmitUrl
     }
