@@ -1,3 +1,7 @@
+# Version 1.1.1
+
+- Fix version definition in manifest file
+
 # Version 1.1.0
 
 - Removed unnecessary entry for "unlimited storage" from required permissions
