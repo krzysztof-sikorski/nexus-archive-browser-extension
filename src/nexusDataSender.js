@@ -25,9 +25,6 @@ class NexusDataSender {
     }
 
     const jsonData = {
-      sessionId: nexusData.sessionId,
-      requestId: nexusData.requestId,
-      previousRequestId: nexusData.previousRequestId,
       requestStartedAt: this._formatDate(nexusData.requestStartedAt),
       responseCompletedAt: this._formatDate(nexusData.responseCompletedAt),
       method: nexusData.method,

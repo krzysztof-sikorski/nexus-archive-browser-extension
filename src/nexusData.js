@@ -3,9 +3,7 @@
 
 class NexusData {
   constructor() {
-    this._sessionId = null
     this._requestId = null
-    this._previousRequestId = null
     this._requestStartedAt = null
     this._responseCompletedAt = null
     this._method = null
@@ -14,28 +12,12 @@ class NexusData {
     this._responseBodyParts = []
   }
 
-  get sessionId() {
-    return this._sessionId
-  }
-
-  set sessionId(value) {
-    this._sessionId = value
-  }
-
   get requestId() {
     return this._requestId
   }
 
   set requestId(value) {
     this._requestId = value
-  }
-
-  get previousRequestId() {
-    return this._previousRequestId
-  }
-
-  set previousRequestId(value) {
-    this._previousRequestId = value
   }
 
   get requestStartedAt() {

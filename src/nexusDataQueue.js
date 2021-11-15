@@ -5,15 +5,12 @@
 class NexusDataQueue {
   constructor() {
     this._data = new Map()
-    this._currentRequestId = null
   }
 
   push(nexusData) {
     if (!(nexusData instanceof NexusData)) {
       window.console.error('[NexusDataQueue] push: argument is not an instance of NexusData!')
     }
-    nexusData.previousRequestId = this._currentRequestId
-    this._currentRequestId = nexusData.requestId
     this._data.set(nexusData.requestId, nexusData)
   }
 

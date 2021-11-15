@@ -3,14 +3,13 @@
 'use strict'
 
 class WebRequestMonitor {
-  constructor(sessionId, nexusDataQueue, nexusDataSender) {
+  constructor(nexusDataQueue, nexusDataSender) {
     if (!(nexusDataQueue instanceof NexusDataQueue)) {
       window.console.error('[NexusDataSender] constructor: argument is not an instance of NexusDataQueue!')
     }
     if (!(nexusDataSender instanceof NexusDataSender)) {
       window.console.error('[NexusDataSender] constructor: argument is not an instance of NexusDataSender!')
     }
-    this._sessionId = sessionId
     this._nexusDataQueue = nexusDataQueue
     this._nexusDataSender = nexusDataSender
   }
@@ -34,7 +33,6 @@ class WebRequestMonitor {
 
   _onBeforeRequest(details) {
     const nexusData = new NexusData()
-    nexusData.sessionId = this._sessionId
     nexusData.requestId = details.requestId
     nexusData.requestStartedAt = details.timeStamp
     nexusData.method = details.method
